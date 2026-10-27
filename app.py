@@ -24,6 +24,9 @@ parsed_transcription_data = {}
 csv_error_data = []
 csv_file_loaded = False
 
+
+
+
 def time_to_seconds(time_str):
     """Convert HH:MM:SS format to seconds"""
     try:
@@ -141,12 +144,15 @@ def serve_audio_segment():
         return f"Error extracting audio segment: {str(e)}", 500
 
 @app.route('/')
-def index():
-    """
-    Renders the main HTML page for the client-side audio player.
-    """
-    return render_template('index.html') 
-
+def hello():
+    return f'''
+    <h1>Hello from Automated CI/CD Pipeline!</h1>
+    <p><strong>Version:</strong> 2.0 - Automated Deployment</p>
+    <p><strong>Deployed via:</strong> GitHub Actions + AWS SSM</p>
+    <p><strong>Build Date:</strong> {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}</p>
+    <p><strong>Assignment:</strong> Automated EC2 Deployment</p>
+    '''
+    
 @app.route('/select_directory', methods=['POST'])
 def select_directory():
     """
