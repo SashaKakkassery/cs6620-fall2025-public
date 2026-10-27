@@ -64,3 +64,6 @@ jobs:
               "docker run -d --name cs6620-app --restart unless-stopped -p 80:5000 ${{ secrets.DOCKERHUB_USERNAME }}/cs6620-app:latest"
             ]' \
             --comment "Deploy application from GitHub Actions"
+
+      - name: Verify AWS identity
+        run: aws sts get-caller-identity
